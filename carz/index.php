@@ -22,16 +22,15 @@ if ($connessione->query($database) === true) {
 */
 
 
+$insert = "INSERT INTO persone(nome, cognome, email) VALUES
+('marcello', 'verdi','marcello@gmail.com')
+";
 
-$table = "CREATE TABLE persone(
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(40) NOT NULL,
-    cognome VARCHAR(40) NOT NULL,
-    email VARCHAR(90) NOT NULL UNIQUE
-)";
-
-if ($connessione->query($table) === true) {
-    echo 'la tabella è stata creata con successo  ';
+if ($connessione->query($insert) === true) {
+    echo 'insermimento dati avvenuta con successo';
 } else {
-    echo 'cè stato un errore con la creazione della tabella';
+    echo ' errore con l ineserimetno dati';
 }
+
+
+$connessione->close();
