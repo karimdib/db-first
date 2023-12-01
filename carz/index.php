@@ -1,36 +1,21 @@
 <?php
 
-
-//$connessione = mysqli_connect('localhost', 'root', '', 'primo');
-
-$connessione = new mysqli('localhost', 'root', '', 'primo');
-
-if ($connessione === false) {
-    echo 'errore con la connessione';
-} else {
-    echo 'connsessione avvenuta con successco';
-}
-
-/*
-$database = ("CREATE DATABASE db_prova");
-
-if ($connessione->query($database) === true) {
-    echo 'database creato con successo';
-} else {
-    echo 'errore con il database';
-}
-*/
+$connessione = new mysqli('localhost', 'root', '', 'umani');
 
 
-$insert = "INSERT INTO persone(nome, cognome, email) VALUES
-('marcello', 'verdi','marcello@gmail.com')
+
+$nome = $connessione->real_escape_string($_GET['nome']);
+$cognome = $connessione->real_escape_string($_GET['cognome']);
+$ordini = $connessione->real_escape_string($_GET['ordini']);
+
+
+$data = "INSERT INTO persone (nome,cognome,ordini) VALUES
+('$nome','$cognome','$ordini')
 ";
 
-if ($connessione->query($insert) === true) {
-    echo 'insermimento dati avvenuta con successo';
+
+if ($connessione->query($data) === true) {
+    echo 'i dati sono stati inseriti correttamene';
 } else {
-    echo ' errore con l ineserimetno dati';
+    echo ' i dati non sono stati inseriti';
 }
-
-
-$connessione->close();
