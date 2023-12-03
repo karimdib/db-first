@@ -10,8 +10,7 @@
 <body>
     <form action="index.php" method="POST">
         <input type="text" name="nome">
-        <input type="text" name="cognome">
-        <input type="text" name="superpotere">
+        <input type="number" name="persone">
         <input type="submit" value="INVIA">
     </form>
 </body>
